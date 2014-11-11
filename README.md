@@ -6,6 +6,8 @@ SQS 這兩把 key 是使用 IAM 管理, 所以在 IAM 那點擊 User 會看到 A
 
 才會顯示 Secret Key, 注意! 記得在關掉 popup 前把 Secret Key 抄下來
 
+**要記得把 SQS 的權限給你的 User, 點擊 `Attach User Policy`**
+
 # Install
 
     go get github.com/crowdmob/goamz/sqs
@@ -17,7 +19,7 @@ SQS 這兩把 key 是使用 IAM 管理, 所以在 IAM 那點擊 User 會看到 A
     secretKey = "*************"
     queueName = https://sqs.ap-northeast-1.amazonaws.com/5**********5/TestQueue
 
-    mySqs := sqs.New(auth, aws.APNortheast)  <= Change to your current region
+    mySqs := sqs.New(auth, aws.APNortheast)  <= Change to your current region in enqueue.go and main.go
 
 > [region list](https://github.com/crowdmob/goamz/blob/master/aws/regions.go)
 
