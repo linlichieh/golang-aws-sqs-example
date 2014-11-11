@@ -11,11 +11,15 @@ SQS 這兩把 key 是使用 IAM 管理, 所以在 IAM 那點擊 User 會看到 A
     go get github.com/crowdmob/goamz/sqs
     go get github.com/crowdmob/goamz/aws
 
-# Type your access key, secret key and SQS queue name (enqueue.go and main.go)
+# Type your access key, secret key, SQS queue name and region (enqueue.go and main.go)
 
     accessKey = "*************"
     secretKey = "*************"
     queueName = https://sqs.ap-northeast-1.amazonaws.com/5**********5/TestQueue
+
+    mySqs := sqs.New(auth, aws.APNortheast)  <= Change to your current region
+
+> [region list](https://github.com/crowdmob/goamz/blob/master/aws/regions.go)
 
 # Run enqueue
 
