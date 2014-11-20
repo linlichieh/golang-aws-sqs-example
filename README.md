@@ -48,6 +48,6 @@ SQS 這兩把 key 是使用 IAM 管理, 所以在 IAM 那點擊 User 會看到 A
 * 用程式撈出來一次大約只能撈到 1~5 筆 (即使程式指定一次要撈 100 筆)
 * 被撈過的 job 會被 AWS SQS 內部 flag 起來, 下一次撈就不會再撈到它, 除非 enqueue 一筆新的 job, 才可以再重新撈取 "已被撈取過的 job"
 * 建議將撈出來的 job 直接做完及 delete job, 不要撈出來不處理而寄放在 AWS SQS 那邊, 否則如果沒有新 job enqueue 進來, 那筆怎麼撈都不會出現
-
+* 如果使用兩個不同 process 的 worker, 要考慮可能會取到同一個 queue 的問題, 建議搭配 redis 做 flag
 
 # 參考及修改來源 `https://github.com/nabeken/golang-sqs-worker-example`
