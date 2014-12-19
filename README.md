@@ -49,6 +49,7 @@ SQS 這兩把 key 是使用 IAM 管理, 所以在 IAM 那點擊 User 會看到 A
 
 # Others
 
-被撈過的 job 會被 AWS SQS 內部註記起來, 下一次撈就不會再撈到它, 除非 enqueue 一筆新的 job, 或過一段時間, 才可以再重新撈取 "已被撈取過的 job"
+每個 SQS job 都有個 timeout, 如果撈出來後一段時間(約 30 秒)沒被刪掉, 再撈可能還會再撈到它, 建議做個
+flag, 確保 job 沒被重複執行
 
 # 參考及修改來源 `https://github.com/nabeken/golang-sqs-worker-example`
