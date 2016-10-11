@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	QueueUrl    = "https://sqs.ap-northeast-1.amazonaws.com/306006842612/survey-worker"
+	QueueUrl    = "https://sqs.ap-northeast-1.amazonaws.com/3**********2/survey-worker"
 	Region      = "ap-northeast-1"
 	CredPath    = "/Users/jex/.aws/credentials"
 	CredProfile = "survey-worker"
