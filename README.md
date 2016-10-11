@@ -22,7 +22,7 @@
 # Run
 
     // Show how to Add, Get and Del a message.
-    go run simple_example.go
+    go run main.go
 
 Output :
 
