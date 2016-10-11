@@ -1,55 +1,49 @@
-# SQS 需要 IAM 管理的 Access Key 及 Secret Key
+# SQS
 
-SQS 這兩把 key 是使用 IAM 管理, 所以在 IAM 那點擊 User 會看到 Access Key,
+這裡的 Credential 用 Shared Credentials Provider 的方式
 
-如果當初管理者沒有把 Secret 記下來, 那麼就要在該頁方點擊 `Manage Access Keys` 再點 `Create Access Key` 重新建立,
+(你也可以直接用最簡單的 Access Key 及 Secret Key 來建立 AWS Session 連接 SQS)
 
-才會顯示 Secret Key, 注意! 記得在關掉 popup 前把 Secret Key 抄下來
-
-**要記得把 SQS 的權限給你的 User, 點擊 `Attach User Policy`**
+> 要記得把 SQS 的權限給你的 User
 
 # Install
 
-    go get github.com/crowdmob/goamz/sqs
-    go get github.com/crowdmob/goamz/aws
+使用 glide 套件管理安裝 :
 
-# Type your access key, secret key, SQS queue name and region (enqueue.go and main.go)
+    glide install
 
-    accessKey = "*************"
-    secretKey = "*************"
-    queueName = https://sqs.ap-northeast-1.amazonaws.com/5**********5/TestQueue
+# Config (in main.go)
 
-    mySqs := sqs.New(auth, aws.APNortheast)  <= Change to your current region in enqueue.go and main.go
+    QueueURL    = "https://sqs.ap-northeast-1.amazonaws.com/3**********2/my-queue"
+    Region      = "ap-northeast-1"
+    CredPath    = "/Users/home/.aws/credentials"
+    CredProfile = "aws-cred-profile"
 
-> [region list](https://github.com/crowdmob/goamz/blob/master/aws/regions.go)
+# Run
 
-# Run enqueue
+    // Show how to Add, Get and Del a message.
+    go run simple_example.go
 
-    mv enqueue.go /tmp/
-    go run /tmp/enqueue.go
+Output :
 
-# Run worker
+    Send message :
 
-    go build
-    ./golang-aws-sqs-example
+    {
+      MD5OfMessageBody: "d29343907090dff4cec4a9a0efb80d20",
+      MessageId: "e4f8a1c5-3401-4388-82c7-e130dc01266d"
+    }
+
+    Receive message :
+
+    {
+      Messages: [{
+          Body: "message body",
+          MD5OfBody: "d29343907090dff4cec4a9a0efb80d20",
+          MessageId: "e4f8a1c5-3401-4388-82c7-e130dc01266d",
+          ReceiptHandle: "AQEBXFv4TCjC6RUaYmVWono55zy+46VMqUH4Jp1k1jY5f8i1smT02A437JeyHU7XTZWFoRjIFlDukVpb4Dzxdwn8dkHqmn+vTCfq8YLB43g5AWVFdFgCprXS2yxM11wm4NrYZvvUhqgIq3wH6CPUKzAzQDFGjYmYho2hmYBohmjT4HsgvOGQbMPC5js0XaQKM71dK31A3uF/6UFnyDPgwr74VRIUHuCuKcD1PwdvcDtG/HaCVAYjDbkxXRgnnU7fhaHMDP+hTd1y0+VI5Fwyn9bxGmCSyVoxwceBXzuIItjZAPFQjIRKoRPxI28NXvBOKS9hUSIEToDq6feE3wsYfDvztuQUEnsyG8jpes2i+rrzZ18MRYJRJbjaFZrsicS3skIoHDuZ1XyshIt8IULOiZwLmg=="
+        }]
+    }
+
+    Successfully delete message
 
 
-# You will see (in worker) :
-
-    2014/10/29 12:22:22 worker: Start polling
-    2014/10/29 12:22:22 worker: Received 1 messages
-    2014/10/29 12:22:22 worker: Spawned worker goroutine
-    This is a test message from golang
-    2014/10/29 12:22:22 worker: Start polling
-    2014/10/29 12:22:22 worker: Start polling
-
-# Multi-worker
-
-利用 redis 做每個 job 的 flag, 所以可在 lan 環境下在不同主機開多個 worker 去跑
-
-# Others
-
-每個 SQS job 都有個 timeout, 如果撈出來後一段時間(約 30 秒)沒被刪掉, 再撈可能還會再撈到它, 建議做個
-flag, 確保 job 沒被重複執行
-
-# 參考及修改來源 `https://github.com/nabeken/golang-sqs-worker-example`

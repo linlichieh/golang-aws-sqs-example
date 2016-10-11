@@ -1,0 +1,3 @@
+package: golang-aws-sqs-example
+import:
+- package: github.com/aws/aws-sdk-go

@@ -1,0 +1,47 @@
+hash: 1bffce30383b61f6b9914c43bad79d89bbd926519be441d896f36f250a64d16b
+updated: 2016-10-11T14:51:05.866785263+08:00
+imports:
+- name: github.com/aws/aws-sdk-go
+  version: ddfd17ec06eee10c24c5c474633273fd034afdda
+  subpackages:
+  - aws
+  - aws/awserr
+  - aws/awsutil
+  - aws/client
+  - aws/client/metadata
+  - aws/corehandlers
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/credentials/endpointcreds
+  - aws/credentials/stscreds
+  - aws/defaults
+  - aws/ec2metadata
+  - aws/request
+  - aws/session
+  - aws/signer/v4
+  - private/endpoints
+  - private/protocol
+  - private/protocol/query
+  - private/protocol/query/queryutil
+  - private/protocol/rest
+  - private/protocol/xml/xmlutil
+  - service/sts
+- name: github.com/crowdmob/goamz
+  version: 3a06871fe9fc0281ca90f3a7d97258d042ed64c0
+  subpackages:
+  - aws
+  - sqs
+- name: github.com/davecgh/go-spew
+  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
+  subpackages:
+  - spew
+- name: github.com/garyburd/redigo
+  version: 8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13
+  subpackages:
+  - internal
+  - redis
+- name: github.com/go-ini/ini
+  version: 6e4869b434bd001f6983749881c7ead3545887d8
+- name: github.com/jmespath/go-jmespath
+  version: bd40a432e4c76585ef6b72d3fd96fb9b6dc7b68d
+testImports: []
