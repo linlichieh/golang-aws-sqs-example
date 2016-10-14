@@ -42,10 +42,9 @@ func main() {
 	receive_params := &sqs.ReceiveMessageInput{
 		QueueUrl:            aws.String(QueueUrl),
 		MaxNumberOfMessages: aws.Int64(3),
-		VisibilityTimeout:   aws.Int64(1),
+		VisibilityTimeout:   aws.Int64(30),
 		WaitTimeSeconds:     aws.Int64(20),
 	}
-
 	receive_resp, err := svc.ReceiveMessage(receive_params)
 	if err != nil {
 		log.Println(err)
@@ -59,8 +58,7 @@ func main() {
 			ReceiptHandle: message.ReceiptHandle, // Required
 
 		}
-
-		_, err := svc.DeleteMessage(delete_params) // 成功刪除不會返回錯誤訊息
+		_, err := svc.DeleteMessage(delete_params) // No response returned when success.
 		if err != nil {
 			log.Println(err)
 		}
