@@ -11,10 +11,10 @@ import (
 )
 
 const (
-	QueueUrl    = "https://sqs.ap-northeast-1.amazonaws.com/3**********2/survey-worker"
+	QueueUrl    = "https://sqs.ap-northeast-1.amazonaws.com/3**********2/my-queue"
 	Region      = "ap-northeast-1"
-	CredPath    = "/Users/jex/.aws/credentials"
-	CredProfile = "survey-worker"
+	CredPath    = "/Users/home/.aws/credentials"
+	CredProfile = "aws-cred-profile"
 )
 
 func main() {

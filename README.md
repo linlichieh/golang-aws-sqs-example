@@ -6,6 +6,7 @@
 
 > 要記得把 SQS 的權限給你的 User
 
+
 # Install
 
 使用 glide 套件管理安裝 :
@@ -14,12 +15,14 @@
 
 > Install glide : `go get github.com/Masterminds/glide`
 
+
 # Modify config (in main.go)
 
     QueueURL    = "https://sqs.ap-northeast-1.amazonaws.com/3**********2/my-queue"
     Region      = "ap-northeast-1"
     CredPath    = "/Users/home/.aws/credentials"
     CredProfile = "aws-cred-profile"
+
 
 # Run
 
@@ -48,7 +51,24 @@ Output :
 
     Successfully delete message
 
+
 # 備註
+
+### Receive message output
+
+    (*sqs.ReceiveMessageOutput)(0xc42043ac40)({
+      Messages: [{
+          Body: "{\"order\":1}",
+          MD5OfBody: "190ad5fd0596a0629a0aa256937135a3",
+          MessageId: "21768609-a37d-452d-92cf-6a867855d3a1",
+          ReceiptHandle: "AQEBieaPYXFxxwrNc8WhYXZb0lhbW3To1iINXgoID8x3XvsJVGQNvtcmV/snP4NnLLRkKGQTX8m3kMxxbnSo91QHt8wrauwpKCFgEyJ+P/COQ/qzSqy1ZWAeWhm4Po7xpHA5ssC5GLBIZoWwEGVPZvKkXg7N79zoMi93ceeNuMxHQuhlATmm4PqC60E44/q2o2jTeZyr4cXsBFbwWNlEFXA/KCxHTg3z96W1hg5d3SZOQZqD+MH0jnO6d1ImXhHVyzBCuvlbaBTsUCiKPjNoFjOqVl/LKom4W6linhKw1fFp7hZ1RMG2oOQ+cJxkVuQxepBabJs6EbTHNhmNCEXV1palEMdRTHZPHvyA0ftRgRQTM1kLIOckMDd7kxVY5ZNfGaPs+LL+H9049ZITTyHR5MkSXg=="
+        }]
+    })
+
+> ReceiptHandle 是用來提供刪除 message 的參數而不是 message id，每一次取出來的值都會變，刪除時要提供最後取出來的 ReceiptHandle 值。
+
+
+### 其他
 
 1. 每一個 request 預設上限大小是 64K，最多可以到 256K
 2. 一次收到的 message 預設是 1 筆，但你可以自已調整，最多 10 筆
