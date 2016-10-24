@@ -26,30 +26,30 @@
 
 # Run
 
-    // Show how to Add, Get and Del a message.
+Show how to `Add`, `Get` and `Del` a message.
+
     go run main.go
 
 Output :
 
-    Send message :
-
+    [Send message]
     {
       MD5OfMessageBody: "d29343907090dff4cec4a9a0efb80d20",
-      MessageId: "e4f8a1c5-3401-4388-82c7-e130dc01266d"
+      MessageId: "021d389c-156e-405a-b672-79b2c8e6af39"
     }
 
-    Receive message :
-
+    [Receive message]
     {
       Messages: [{
           Body: "message body",
           MD5OfBody: "d29343907090dff4cec4a9a0efb80d20",
-          MessageId: "e4f8a1c5-3401-4388-82c7-e130dc01266d",
-          ReceiptHandle: "AQEBXFv4TCjC6RUaYmVWono55zy+46VMqUH4Jp1k1jY5f8i1smT02A437JeyHU7XTZWFoRjIFlDukVpb4Dzxdwn8dkHqmn+vTCfq8YLB43g5AWVFdFgCprXS2yxM11wm4NrYZvvUhqgIq3wH6CPUKzAzQDFGjYmYho2hmYBohmjT4HsgvOGQbMPC5js0XaQKM71dK31A3uF/6UFnyDPgwr74VRIUHuCuKcD1PwdvcDtG/HaCVAYjDbkxXRgnnU7fhaHMDP+hTd1y0+VI5Fwyn9bxGmCSyVoxwceBXzuIItjZAPFQjIRKoRPxI28NXvBOKS9hUSIEToDq6feE3wsYfDvztuQUEnsyG8jpes2i+rrzZ18MRYJRJbjaFZrsicS3skIoHDuZ1XyshIt8IULOiZwLmg=="
+          MessageId: "021d389c-156e-405a-b672-79b2c8e6af39",
+          ReceiptHandle: "AQEBdFvUW17FUHIG+iirIstj8O4F2xQ7GS+YjrDnyKl0sMTCpVRErSn0YwujbKbuqgnF6Q4wj8JXUTZ+p28h52WzVo/McV5DCwu68KaUSphPIB3OX1CHHjJX2aLInpGoxbjL84tNRiwPt/LACRGRhvslO2SZvGWeUkQ9YojXR+pmJGmYUCsrCKTHSBxPemS4ksG6VCb3FWt2hev8OWiYGZ0hTX9e5qSMfq1EjEHLRbKHK8aU+4X+RZm+2pd0cM8igsqVOQ6YEMrVr1LOtvWrAvo4kUat8hktQGvV6ZTtQRsBdIYqZz51fQZC3bisD+qvZlo7/ncwTNAHwYz2oTHSNgM1AZX9NUTCYG2bOS8+LzMIkC63sruS4W4m5N6zIVaq5yrr87JlXXp+dZqw9LkN21RJyA=="
         }]
     }
 
-    Successfully delete message
+    [Delete message]
+    Message ID: 021d389c-156e-405a-b672-79b2c8e6af39 has beed deleted.
 
 
 # 備註
